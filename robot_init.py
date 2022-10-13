@@ -1,8 +1,7 @@
-import math
 import random
-from robot import Robot
 from LeapingRobot import LeapingRobot
-from grid import grid
+from robot import Robot
+
 
 class RobotFactory:
 

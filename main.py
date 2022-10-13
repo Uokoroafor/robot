@@ -10,4 +10,4 @@ from NavigationManager import *
 # Now to run the experiment
 if __name__=='__main__':
     my_grid=grid(10)
-    move_all_to_drink(robot_count=5,grid=my_grid)
+    move_all_to_drink(robot_count=5, grid=my_grid)
