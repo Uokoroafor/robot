@@ -1,0 +1,11 @@
+Ribena
+Pepsi
+Schwepps
+Coca-Cola
+Fanta
+Sprite
+Maltina
+Guinness
+Lemonade
+Coffee
+Coors_lite
