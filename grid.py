@@ -1,7 +1,7 @@
 import random
 
 
-class grid:
+class Grid:
     def __init__(self, size=10):
         """ This initialises the grid class """
         self.size = size
@@ -33,11 +33,8 @@ class grid:
     def _wall_test(self, position, direction):
         """ Checks whether the robot has hit the wall or not. Will return a boolean
         Args:
-            row (int): The current row
-            col (int): The current column
+            position (tuple): (row,column) that is being checked
             direction (str): The current direction
-            grid_size (int): The size of the square grid
-
         Returns:
             True/False if the robot is/isn't at the wall"""
 
