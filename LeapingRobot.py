@@ -31,5 +31,6 @@ class LeapingRobot(Robot):
         super().print_greeting()
         print(f'{self.name} is a leaping robot.')
 
-    def _report_leap(self):
+    @staticmethod
+    def _report_leap():
         print(f'I just jumped!')

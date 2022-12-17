@@ -2,11 +2,12 @@ from drink import Drink
 from robot_init import RobotFactory
 
 
-def move_all_to_drink(grid, robot_count=3):
+def move_all_to_drink(grid, robot_count=3, delay=False):
     """This is the root function that takes robot details and navigates it to the Ribena
     Args:
         grid (object): The size of the grid
-        robot_count (int): The number of robots taking part"""
+        robot_count (int): The number of robots taking part
+        delay (bool): Whether or not to print the board after each step"""
 
     skynet = RobotFactory(grid=grid)
     robots = skynet.create_robots(grid=grid, count=robot_count)
@@ -17,7 +18,7 @@ def move_all_to_drink(grid, robot_count=3):
         target_drink = Drink()
         robot.print_search()
         robot.print_location()
-        navigate_to_drink(robot, grid=grid, drink=target_drink)
+        navigate_to_drink(robot, grid=grid, drink=target_drink, delay=delay)
 
 
 def get_direction_string(txt):
@@ -32,20 +33,23 @@ def get_direction_string(txt):
         return 'West'
 
 
-def navigate_to_drink(robot, grid, drink):
+def navigate_to_drink(robot, grid, drink, delay=False):
     """ This navigates to the corner cell of the grid with the drink"""
     drink_name = drink.name
     grid_size = grid.size
-    end_pos = grid._get_end_position()
+    end_pos = grid.get_end_position()
+    print('Initial setup of grid')
+    grid.print_grid(r_pos=robot.position, d_pos=end_pos, delay=False)
 
-    target = False
-    while ((robot.position[1] != grid_size - 1) or (robot.position[0] != grid_size - 1)):
+    while (robot.position[1] != grid_size - 1) or (robot.position[0] != grid_size - 1):
         wall = False
         while not wall:
             robot.move_forward(grid_size=grid_size)
             wall = grid._wall_test(robot.position, robot.direction)
             cardinal = get_direction_string(robot.direction)
             print(f'My current location is ({robot.position}), facing {cardinal}')
+            if delay:
+                grid.print_grid(r_pos=robot.position, d_pos=end_pos, delay=delay)
 
             if (robot.position[0] == end_pos[0]) and (robot.position[1] == end_pos[1]):
                 break

@@ -52,6 +52,9 @@ class Robot:
         """ Prints my robot's name and id"""
         print(f'Hello my name is {self.name}. My ID is {self.id}.')
 
+    def __repr__(self):
+        return f"Robot(name: {self.name}, id: {self.id}, position: ({self.position}))"
+
     def print_location(self):
         def get_direction_string(txt):
             """ Converts direction into full text """
@@ -69,3 +72,10 @@ class Robot:
 
     def print_search(self):
         print(f'{self.name} is looking for its drink.')
+
+
+if __name__ == '__main__':
+    # Create a Random Robot and print
+    jerry = Robot(name='Jerry', identifier='001', position='5,5', direction='e')
+    print(jerry)
+

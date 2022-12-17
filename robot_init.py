@@ -21,7 +21,8 @@ class RobotFactory:
         my_name = names[random.randint(0, len(names) - 1)]
         return my_name
 
-    def _get_id(self):
+    @staticmethod
+    def _get_id():
 
         return str(random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')) + str(random.randint(1, 1000))
 
@@ -33,9 +34,10 @@ class RobotFactory:
 
         row = random.randint(0, self.grid_size - 1)
         col = random.randint(0, self.grid_size - 1)
-        return (row, col)
+        return row, col
 
-    def _get_direction(self):
+    @staticmethod
+    def _get_direction():
         """ Initialises a random cardinal direction for the robot to start with
 
             Returns:
@@ -53,14 +55,14 @@ class RobotFactory:
 
         head for leaper, tails for regular
 
-        if mode == 'leap' or mode =='reg' then it's fairly self explanatory
+        if mode == 'leap' then it's fairly self-explanatory
         
         """
         robots = []
         for a in range(count):
             name = self._get_name()
             identifier = self._get_id()
-            position = grid._get_position()
+            position = grid.get_position()
             direction = self._get_direction()
 
             if mode == 'rand':
