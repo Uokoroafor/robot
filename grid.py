@@ -25,7 +25,7 @@ class Grid:
         col = random.randint(0, self.size - 1)
         return row, col
 
-    def _wall_test(self, position, direction):
+    def wall_test(self, position, direction):
         """ Checks whether the robot has hit the wall or not. Will return a boolean
         Args:
             position (tuple): (row,column) that is being checked

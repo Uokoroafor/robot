@@ -40,20 +40,23 @@ def navigate_to_drink(robot, grid, drink, delay=False):
     end_pos = grid.get_end_position()
     print('Initial setup of grid')
     grid.print_grid(r_pos=robot.position, d_pos=end_pos, delay=False)
+    target = False # True if Robot has arrived at target
 
-    while (robot.position[1] != grid_size - 1) or (robot.position[0] != grid_size - 1):
+    while (robot.position[1] != grid_size - 1) or (robot.position[0] != grid_size - 1) or target==False:
         wall = False
         while not wall:
             robot.move_forward(grid_size=grid_size)
-            wall = grid._wall_test(robot.position, robot.direction)
+            wall = grid.wall_test(robot.position, robot.direction)
             cardinal = get_direction_string(robot.direction)
             print(f'My current location is ({robot.position}), facing {cardinal}')
             if delay:
                 grid.print_grid(r_pos=robot.position, d_pos=end_pos, delay=delay)
 
             if (robot.position[0] == end_pos[0]) and (robot.position[1] == end_pos[1]):
+                target = True
                 break
-        if (robot.position[0] == end_pos[0]) and (robot.position[1] == end_pos[1]):
+        # if (robot.position[0] == end_pos[0]) and (robot.position[1] == end_pos[1]):
+        if target:
             break
 
         print('I have a wall in front of me!')

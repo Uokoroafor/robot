@@ -55,19 +55,20 @@ class Robot:
     def __repr__(self):
         return f"Robot(name: {self.name}, id: {self.id}, position: ({self.position}))"
 
-    def print_location(self):
-        def get_direction_string(txt):
-            """ Converts direction into full text """
-            if txt == 'n':
-                return 'North'
-            elif txt == 's':
-                return 'South'
-            elif txt == 'e':
-                return 'East'
-            elif txt == 'w':
-                return 'West'
+    @staticmethod
+    def get_direction_string(txt):
+        """ Converts direction into full text """
+        if txt == 'n':
+            return 'North'
+        elif txt == 's':
+            return 'South'
+        elif txt == 'e':
+            return 'East'
+        elif txt == 'w':
+            return 'West'
 
-        dir_string = get_direction_string(self.direction)
+    def print_location(self):
+        dir_string = self.get_direction_string(self.direction)
         print(f'My current location is ({self.position}), facing {dir_string}.')
 
     def print_search(self):
@@ -78,4 +79,3 @@ if __name__ == '__main__':
     # Create a Random Robot and print
     jerry = Robot(name='Jerry', identifier='001', position='5,5', direction='e')
     print(jerry)
-
