@@ -1,10 +1,30 @@
 
 # Robot
 
-This is code for the Robot from Josiah Wang's Python course. It is a toy example that initiates a robot and allows it to navigate through a square grid for a target (drink). This was largely used to learn about Object Oriented Programming (OOP).
+This is code for the Robot from Josiah Wang's Python Introduction tutorials at Imperial College London. It is a toy example that initiates a robot and allows it to navigate through a square grid for a target (drink). This was largely used to learn about Object Oriented Programming (OOP).
 
+## Process flow
 
+The path followed by a normal robot is displayed below:
+
+```mermaid
+graph TD
+A[Initialise Robot and Drink in Grid] 
+A-->B(Robot introduces itself)
+B-->C(Robot moves forward)
+C-->D(Robot announces current location)
+D-->E{Drink at current location?}
+E-->|Yes|F((Robot drinks!))
+E-->|No|G{Robot facing wall?}
+G-->|Yes|H(Robot turns 90 degrees)
+G-->|No|C
+H-->C
+style F fill:#f9f,stroke:#333,stroke-width:4px
+style A fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+```
 ## Files included
+
+
 
 1. **robot.py**: This contains the Robot class
 
@@ -33,7 +53,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd robot
+  cd Robot
 ```
 
 
