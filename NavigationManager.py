@@ -64,3 +64,42 @@ def navigate_to_drink(robot, grid, drink, delay=False):
 
     print('I am now drinking ' + drink_name + ' and happy!')
     print('***' * 10)
+
+
+def progress(robot1,robot2, battle_grid,delay=False):
+    """ This moves the robot forward"""
+    grid_size = battle_grid.size
+    print('Initial setup of grid')
+    battle_grid.print_grid(r1_pos=robot1.position, r2_pos=robot2.position, delay=False)
+    target = False # True if Robot has arrived at target
+
+    while (robot1.alive != grid_size - 1) or (robot2.position[0] != grid_size - 1) or target==False:
+        wall = False
+        while not wall:
+            robot.move_forward(grid_size=grid_size)
+            wall = grid.wall_test(robot.position, robot.direction)
+            cardinal = get_direction_string(robot.direction)
+            print(f'My current location is ({robot.position}), facing {cardinal}')
+            if delay:
+                grid.print_grid(r_pos=robot.position, d_pos=end_pos, delay=delay)
+
+            if (robot.position[0] == end_pos[0]) and (robot.position[1] == end_pos[1]):
+                target = True
+                break
+        # if (robot.position[0] == end_pos[0]) and (robot.position[1] == end_pos[1]):
+        if target:
+            break
+
+        print('I have a wall in front of me!')
+        robot.turn_90_degrees()
+
+    print('I am now drinking ' + drink_name + ' and happy!')
+    print('***' * 10)
+
+
+def start_battle(battle_grid, robot1, robot2, delay = False):
+    grid_size = battle_grid.size
+    print('Printing Empty Grid')
+    battle_grid.print()
+
+

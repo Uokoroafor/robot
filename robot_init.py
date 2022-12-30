@@ -1,6 +1,7 @@
 import random
 from LeapingRobot import LeapingRobot
 from robot import Robot
+from BattleRobot import BattleRobot
 
 
 class RobotFactory:
@@ -76,4 +77,18 @@ class RobotFactory:
 
             else:
                 robots.append(Robot(identifier, name, position, direction))
+        return robots
+
+    def create_battle_robots(self, battle_grid):
+        """ This creates battle robots.
+
+        """
+        robots = []
+        for _ in range(2):
+            name = self._get_name()
+            identifier = self._get_id()
+            position = battle_grid.get_position()
+            direction = self._get_direction()
+            robots.append(BattleRobot(identifier, name, position, direction))
+
         return robots

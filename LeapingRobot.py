@@ -33,4 +33,4 @@ class LeapingRobot(Robot):
 
     @staticmethod
     def _report_leap():
-        print(f'I just jumped!')
+        print('I just jumped!')

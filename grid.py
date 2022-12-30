@@ -78,14 +78,58 @@ class Grid:
         print(output)
 
 
+class BattleGrid(Grid):
+
+    def __init__(self, size=10):
+        """ This initialises the battle grid class """
+        super().__init__(size=size)
+    def print_grid(self, sign='*', r1_pos=None, r2_pos=None, delay=False):
+        """This allows for Grid visualisation"""
+        if r1_pos is None:
+            r1_pos = (self.size + 1, self.size + 1)
+        if r2_pos is None:
+            r2_pos = (self.size + 1, self.size + 1)
+
+        output = "  "
+        for j in range(self.size):
+            output += f"|  {j}  "
+        output += "|  \n"
+        output += (self.size * 6 + 4) * "-"
+        output += "\n"
+
+        for i in range(self.size):
+            output += f"|{i}"
+            for j in range(self.size):
+                if (i, j) == r1_pos:
+                    output += "|  R1 "
+                elif (i, j) == r2_pos:
+                    output += "|  R2 "
+                else:
+                    output += f"|  {sign}  "
+            output += "| \n"
+            output += (self.size * 6 + 4) * "-"
+            output += "\n"
+        if delay:
+            input('')
+        print(output)
+
 def print_test():
     """Initialise a grid of random size and print an empty grid"""
 
     test_size = random.randint(3, 5)
     test_grid = Grid(test_size)
-    print(f'initialising a board of size {test_size}. \n Please confirm visual')
+    print(f'initialising a grid of size {test_size}. \n Please confirm visual')
     test_grid.print_grid(r_pos=(0, test_size - 1), d_pos=(test_size - 1, 0), delay=False)
 
 
+def print_battle_test():
+    """Initialise a grid of random size and print an empty grid"""
+
+    test_size = random.randint(3, 10)
+    battle_grid = BattleGrid(test_size)
+    print(f'initialising a battle grid of size {test_size}. \n Please confirm visual')
+    battle_grid.print_grid(r1_pos=(0, test_size - 1), r2_pos=(test_size - 1, 0), delay=False)
+
 if __name__ == '__main__':
     print_test()
+    print_battle_test()
