@@ -1,12 +1,12 @@
 import random
-from LeapingRobot import LeapingRobot
+from leapingrobot import LeapingRobot
 from robot import Robot
-from BattleRobot import BattleRobot
+from battlerobot import BattleRobot
 
 
 class RobotFactory:
 
-    def __init__(self, grid, filename='robot_names.txt'):
+    def __init__(self, grid, filename='name_files/robot_names.txt'):
         """ This initialises the Robot generation and creates all the necessary
         
         """
@@ -57,7 +57,6 @@ class RobotFactory:
         head for leaper, tails for regular
 
         if mode == 'leap' then it's fairly self-explanatory
-        
         """
         robots = []
         for a in range(count):
@@ -80,9 +79,7 @@ class RobotFactory:
         return robots
 
     def create_battle_robots(self, battle_grid):
-        """ This creates battle robots.
-
-        """
+        """ This creates battle robots."""
         robots = []
         for _ in range(2):
             name = self._get_name()

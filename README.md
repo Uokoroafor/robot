@@ -1,7 +1,7 @@
 
 # Robot
 
-This is code for the Robot from Josiah Wang's Python Introduction tutorials at Imperial College London. It is a toy example that initiates a robot and allows it to navigate through a square grid for a target (drink). This was largely used to learn about Object Oriented Programming (OOP).
+This is code for the Robot from Josiah Wang's Python Introduction tutorials at Imperial College London. It is a toy example that initiates a robot and allows it to navigate through a square grid for a target (drink). This was largely used to learn about Object-Oriented Programming (OOP).
 
 ## Process flow
 
@@ -36,11 +36,13 @@ style A fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
 
 5. **robot_init.py**: This contains the RobotFactory class for generating multiple robot names
 
-6. **robot_names.txt**: List of names for random selection to assign a robot a nmae
+6. **robot_names.txt**: List of names for random selection to assign a robot a name
 
-7. **drink_names.txt**: List of names for random selection to assign a target drink a nmae
+7. **drink_names.txt**: List of names for random selection to assign a target drink a name
 
 8. **NavigationManager.py**: This contains the drinks class
+
+9. **BattleRobot.py**: This contains the BattleRobot class
 
 ## Run Locally
 
@@ -61,8 +63,10 @@ Go to the project directory
 
 ```python
 # Imports: Please first run the commands. Note that running these commands will automatically import numpy as np and numpy.random as default rng. This allows for seeding randomness if required:
-from NavigationManager import *
+from NavigationManager import move_all_to_drink
 from grid import Grid
+from drink import Drink
+from robot import Robot
 
 # Initialise a 5x5 grid
 my_grid=Grid(5)

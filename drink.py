@@ -2,7 +2,7 @@ import random
 
 
 class Drink:
-    def __init__(self, filename='drink_names.txt', auto=True):
+    def __init__(self, filename='name_files/drink_names.txt', auto=True):
         """ This initialises a drinks class """
         if auto:
             names = []

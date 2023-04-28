@@ -9,7 +9,9 @@ def move_all_to_drink(grid, robot_count=3, delay=False):
     Args:
         grid (object): The size of the grid
         robot_count (int): The number of robots taking part
-        delay (bool): Whether or not to print the board after each step"""
+        delay (bool): Whether to print the board after each step"""
+
+    print('Welcome to the Robot Navigation Manager')
 
     skynet = RobotFactory(grid=grid)
     robots = skynet.create_robots(grid=grid, count=robot_count)
@@ -42,9 +44,9 @@ def navigate_to_drink(robot, grid, drink, delay=False):
     end_pos = grid.get_end_position()
     print('Initial setup of grid')
     grid.print_grid(r_pos=robot.position, d_pos=end_pos, delay=False)
-    target = False # True if Robot has arrived at target
+    target = False  # True if Robot has arrived at target
 
-    while (robot.position[1] != grid_size - 1) or (robot.position[0] != grid_size - 1) or target==False:
+    while (robot.position[1] != grid_size - 1) or (robot.position[0] != grid_size - 1) or target == False:
         wall = False
         while not wall:
             robot.move_forward(grid_size=grid_size)
@@ -68,7 +70,7 @@ def navigate_to_drink(robot, grid, drink, delay=False):
     print('***' * 10)
 
 
-def progress(robot,battle_grid):
+def progress(robot, battle_grid):
     """ This moves the robot forward"""
     grid_size = battle_grid.size
 
@@ -82,6 +84,7 @@ def progress(robot,battle_grid):
     robot.print_greeting()
     robot.print_location()
 
+
 def battle(robots):
     # At each go, one Robot is randomly selected to go first
 
@@ -91,7 +94,7 @@ def battle(robots):
 
 
 def fight(robots):
-    winner=None
+    winner = None
     print(f'{robots[0].name} goes first.')
 
     robots[0].attack(robots[1])
@@ -109,16 +112,15 @@ def fight(robots):
         print(f'Winner is {winner.name}!')
 
 
-
-def start_grid(battle_grid, delay = False):
-    #grid_size = battle_grid.size
+def start_grid(battle_grid, delay=False):
+    # grid_size = battle_grid.size
     print('Printing Empty Grid')
     battle_grid.print_grid()
-    skynet=RobotFactory(battle_grid)
-    robots=skynet.create_battle_robots(battle_grid)
+    skynet = RobotFactory(battle_grid)
+    robots = skynet.create_battle_robots(battle_grid)
     while not robots[0].is_enemy_close(robots[1]):
         for robot in robots:
-            progress(robot,battle_grid)
+            progress(robot, battle_grid)
             battle_grid.print_grid(sign='*', r1_pos=robots[0].position, r2_pos=robots[1].position, delay=delay)
             if robots[0].is_enemy_close(robots[1]):
                 break
@@ -126,10 +128,5 @@ def start_grid(battle_grid, delay = False):
 
 
 if __name__ == '__main__':
-    my_grid=BattleGrid(5)
-    start_grid(my_grid, delay=True)
+    my_grid = BattleGrid(5)
     pass
-
-
-
-
